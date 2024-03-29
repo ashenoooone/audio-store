@@ -1,0 +1,21 @@
+.Badge {
+    position: absolute;
+    display: flex;
+    width: 17px;
+    height: 17px;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+    border-radius: 50%;
+    user-select: none;
+    background: var(--primary-color);
+    color: var(--white);
+    top: -10px;
+    right: -13px;
+}
+
+.not_circle {
+    width: auto;
+    border-radius: 10px;
+    padding: 1px 4px;
+}

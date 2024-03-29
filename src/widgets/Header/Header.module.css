@@ -1,0 +1,12 @@
+.Header {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}

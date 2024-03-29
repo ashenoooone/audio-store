@@ -1,4 +1,5 @@
 @import "./fonts/stylesheet.css";
+@import 'vendor/normalize.css';
 
 :root {
     /* colors */
@@ -6,6 +7,11 @@
     --text-color: #1C1C27;
     --secondary-color: #838383;
     --bg-color: #EAEAEA;
+    --white: #fff;
+
+    /* effects */
+    --card-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    --card-border-radius: 30px;
 
     /* fonts */
     --font-family-name: "Montserrat", 'Times New Roman', serif;
@@ -23,8 +29,13 @@
     --font-sm: var(--font-size-sm) / var(--font-line-sm) var(--font-family-name);
 
 
+    /* paddings */
+    --page-x-paddings: 20px;
+
     /*  sizes */
     --navbar-height: 60px;
+    --max-page-width: 1440px;
+    --min-page-width: 320px;
 }
 
 .app {
@@ -32,4 +43,11 @@
     background: var(--bg-color);
     color: var(--text-color);
     min-height: 100vh;
+}
+
+.content-page {
+    max-width: var(--max-page-width);
+    min-width: var(--min-page-width);
+    margin: 0 auto;
+    padding: 0 var(--page-x-paddings);
 }
