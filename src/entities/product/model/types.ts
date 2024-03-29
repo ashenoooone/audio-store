@@ -3,4 +3,5 @@ export type ProductType = {
   title: string;
   price: number;
   rate: number;
+  old_price?: number;
 };

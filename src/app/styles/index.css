@@ -4,10 +4,16 @@
 :root {
     /* colors */
     --primary-color: #FFA542;
+    --primary-muted: #FFCE7F;
     --text-color: #1C1C27;
     --secondary-color: #838383;
     --bg-color: #EAEAEA;
     --white: #fff;
+
+    /* fonts-weights */
+    --fw-semi-bold: 600;
+    --fw-bold: bold;
+    --fw-medium: 500;
 
     /* effects */
     --card-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
@@ -16,9 +22,14 @@
     /* fonts */
     --font-family-name: "Montserrat", 'Times New Roman', serif;
 
-    --font-size-xl: 25px;
-    --font-line-xl: 30px;
+    --font-size-xxl: 25px;
+    --font-line-xxl: 30px;
+    --font-xxl: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-name);
+
+    --font-size-xl: 20px;
+    --font-line-xl: 24px;
     --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-name);
+
 
     --font-size-md: 17px;
     --font-line-md: 21px;
@@ -34,7 +45,7 @@
 
     /*  sizes */
     --navbar-height: 60px;
-    --max-page-width: 1440px;
+    --max-page-width: 1100px;
     --min-page-width: 320px;
 }
 

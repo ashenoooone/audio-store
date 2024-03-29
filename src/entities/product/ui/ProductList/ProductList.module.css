@@ -1,0 +1,23 @@
+.ProductList {
+}
+
+.title {
+    font: var(--font-xl);
+    color: var(--secondary-color);
+    margin: 0 0 24px;
+    font-weight: var(--fw-semi-bold);
+}
+
+.list {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+@media screen and (min-width: 1040px) {
+    .list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
