@@ -14,6 +14,7 @@ module.exports = {
   plugins: ['react-refresh', 'i18next', 'react', '@typescript-eslint'],
   rules: {
     'import/no-unresolved': [0],
+    'import/named': [0],
     'react/prop-types': [0],
     'react/react-in-jsx-scope': [0],
     '@typescript-eslint/no-unused-vars': [0],
