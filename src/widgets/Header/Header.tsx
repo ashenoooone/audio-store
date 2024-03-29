@@ -17,7 +17,7 @@ export const Header = (props: HeaderProps) => {
       <Logo />
       <div className={cls.buttons}>
         <FavouritesIcon itemsInCart={12} />
-        <CartIcon itemsInCart={3} />
+        <CartIcon itemsInCart={2} />
       </div>
     </div>
   );
