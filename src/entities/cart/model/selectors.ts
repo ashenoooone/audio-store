@@ -5,3 +5,9 @@ export const getTotalCartPrice = (state: CartStoreType) =>
     ac += cartItem.item.price * cartItem.count;
     return ac;
   }, 0);
+
+export const getTotalCartLength = (state: CartStoreType) =>
+  state.items.reduce((ac, cartItem) => {
+    ac += cartItem.count;
+    return ac;
+  }, 0);

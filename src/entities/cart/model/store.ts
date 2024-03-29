@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { CartItemType, CartStoreType } from './types.ts';
-import { immer } from 'zustand/middleware/immer';
 import { createSelectors } from '~/shared/lib/createSelectors.ts';
+import { immer } from 'zustand/middleware/immer';
 
 const useCartStoreBase = create<CartStoreType>()(
   immer((set) => ({
