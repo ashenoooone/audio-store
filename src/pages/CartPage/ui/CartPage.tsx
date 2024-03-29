@@ -1,4 +1,5 @@
 import React from 'react';
+import { Page } from '~/shared/ui/Page';
 
 interface CartPageProps {
   className?: string;
@@ -6,5 +7,5 @@ interface CartPageProps {
 
 export const CartPage = (props: CartPageProps) => {
   const { className = '' } = props;
-  return <div className={className}></div>;
+  return <Page className={className}></Page>;
 };
