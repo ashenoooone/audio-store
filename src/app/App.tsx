@@ -1,6 +1,7 @@
 import 'normalize.css';
+import './styles/index.css';
 function App() {
-  return <>1</>;
+  return <div className={'app'}>1</div>;
 }
 
 export default App;

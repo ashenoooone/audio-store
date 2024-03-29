@@ -1,68 +1,35 @@
+@import "./fonts/stylesheet.css";
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    /* colors */
+    --primary-color: #FFA542;
+    --text-color: #1C1C27;
+    --secondary-color: #838383;
+    --bg-color: #EAEAEA;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+    /* fonts */
+    --font-family-name: "Montserrat", 'Times New Roman', serif;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    --font-size-xl: 25px;
+    --font-line-xl: 30px;
+    --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-name);
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+    --font-size-md: 17px;
+    --font-line-md: 21px;
+    --font-md: var(--font-size-md) / var(--font-line-md) var(--font-family-name);
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    --font-size-sm: 13px;
+    --font-line-sm: 16px;
+    --font-sm: var(--font-size-sm) / var(--font-line-sm) var(--font-family-name);
+
+
+    /*  sizes */
+    --navbar-height: 60px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.app {
+    font: var(--font-md);
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
 }
