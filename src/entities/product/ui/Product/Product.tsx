@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ProductType } from '../../model/types.ts';
 import cls from './Product.module.css';
 import classNames from 'classnames';
@@ -9,13 +9,18 @@ import { useTranslation } from 'react-i18next';
 
 interface ProductProps {
   className?: string;
-  product?: ProductType;
+  product: ProductType;
+  onBuyClick?: (product: ProductType) => void;
 }
 
 export const Product = (props: ProductProps) => {
-  const { className = '', product } = props;
+  const { className = '', product, onBuyClick } = props;
 
   const { t } = useTranslation('main');
+
+  const onBuyClickHandler = useCallback(() => {
+    onBuyClick?.(product);
+  }, [onBuyClick, product]);
 
   return (
     <Card className={classNames(className, cls.Product)}>
@@ -41,7 +46,9 @@ export const Product = (props: ProductProps) => {
             <StarSVG />
             {product?.rate}
           </div>
-          <Button className={cls.button}>{t('Купить')}</Button>
+          <Button className={cls.button} onClick={onBuyClickHandler}>
+            {t('Купить')}
+          </Button>
         </div>
       </div>
     </Card>

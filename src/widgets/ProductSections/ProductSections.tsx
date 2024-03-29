@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ProductList, ProductType } from '~/entities/product';
 import cls from './ProductSections.module.css';
+import { useCartStore } from '~/entities/cart';
 
 interface ProductSectionsProps {
   className?: string;
@@ -8,6 +9,15 @@ interface ProductSectionsProps {
 }
 
 export const ProductSections = (props: ProductSectionsProps) => {
+  const addToCart = useCartStore.use.addToCart();
+
+  const onProductListBuyClick = useCallback(
+    (product: ProductType) => {
+      addToCart(product);
+    },
+    [addToCart],
+  );
+
   const { className = '', sections } = props;
   return (
     <div className={className}>
@@ -18,6 +28,7 @@ export const ProductSections = (props: ProductSectionsProps) => {
             key={'section' + index}
             products={v}
             title={k}
+            onBuyClick={onProductListBuyClick}
           />
         ))}
     </div>

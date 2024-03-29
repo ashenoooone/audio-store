@@ -7,7 +7,7 @@ import image_3 from '~/shared/assets/mock/3.png';
 import image_4 from '~/shared/assets/mock/4.png';
 import image_5 from '~/shared/assets/mock/5.png';
 import image_6 from '~/shared/assets/mock/6.png';
-import { ProductSections } from '~/pages/MainPage/ui/ProductSections/ProductSections.tsx';
+import { ProductSections } from '~/widgets/ProductSections';
 
 interface MainPageProps {
   className?: string;

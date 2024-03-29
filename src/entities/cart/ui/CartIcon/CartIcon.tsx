@@ -19,7 +19,9 @@ export const CartIcon = (props: CartProps) => {
       {...rest}
     >
       <CartSVG />
-      {itemsInCart && <Badge value={itemsInCart} />}
+      {itemsInCart !== undefined && itemsInCart > 0 && (
+        <Badge value={itemsInCart} />
+      )}
     </Button>
   );
 };
