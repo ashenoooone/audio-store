@@ -22,13 +22,7 @@ const useCartStoreBase = create<CartStoreType>()(
 
             // если нашли, увеличиваем количество
             if (findedProduct) {
-              state.items = [
-                ...state.items,
-                {
-                  ...findedProduct,
-                  count: (findedProduct.count += 1),
-                },
-              ];
+              findedProduct.count += 1;
             }
           }),
         decreaseInCart: (title: string) =>
@@ -40,13 +34,7 @@ const useCartStoreBase = create<CartStoreType>()(
 
             // если продукт найден и его больше 1, то уменьшаем кол-во на 1
             if (findedProduct && findedProduct.count > 1) {
-              state.items = [
-                ...state.items,
-                {
-                  ...findedProduct,
-                  count: (findedProduct.count -= 1),
-                },
-              ];
+              findedProduct.count -= 1;
             } else {
               // если продукт найден, но количество === 1, то просто удаляем продукт из корзины
               state.items = state.items.filter(

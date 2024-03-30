@@ -33,6 +33,10 @@ export const CartItem = (props: CartItemProps) => {
     onIncreaseClick?.(item);
   }, [item, onIncreaseClick]);
 
+  const onDeleteClickHandler = useCallback(() => {
+    onDeleteClick?.(item);
+  }, [item, onDeleteClick]);
+
   return (
     <Card className={classNames(className, cls.CartItem)}>
       <div className={cls.main_content}>
@@ -67,7 +71,11 @@ export const CartItem = (props: CartItemProps) => {
       <p className={cls.total_price}>
         {(item.count * item.item.price).toFixed(2)}&nbsp;₽
       </p>
-      <Button className={cls.delete_button} buttonTheme={'link'}>
+      <Button
+        className={cls.delete_button}
+        buttonTheme={'link'}
+        onClick={onDeleteClickHandler}
+      >
         <TrashBoxSVG />
       </Button>
     </Card>
