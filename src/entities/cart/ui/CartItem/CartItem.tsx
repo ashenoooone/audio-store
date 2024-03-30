@@ -8,6 +8,8 @@ import { MinusSVG } from '~/shared/assets/MinusSVG.tsx';
 import { PlusSVG } from '~/shared/assets/PlusSVG.tsx';
 import { TrashBoxSVG } from '~/shared/assets/TrashBoxSVG.tsx';
 import { Price } from '~/shared/ui/Price';
+import { EyeSVG } from '~/shared/assets/EyeSVG.tsx';
+import { ProductType } from '~/entities/product';
 
 interface CartItemProps {
   className?: string;
@@ -15,6 +17,7 @@ interface CartItemProps {
   onIncreaseClick?: (cartItem: CartItemType) => void;
   onDecreaseClick?: (cartItem: CartItemType) => void;
   onDeleteClick?: (cartItem: CartItemType) => void;
+  onOpenExtendedProductInfo?: (product: ProductType) => void;
 }
 
 export const CartItem = memo((props: CartItemProps) => {
@@ -24,6 +27,7 @@ export const CartItem = memo((props: CartItemProps) => {
     onDeleteClick,
     onIncreaseClick,
     onDecreaseClick,
+    onOpenExtendedProductInfo,
   } = props;
 
   const onDecreaseClickHandler = useCallback(() => {
@@ -37,6 +41,10 @@ export const CartItem = memo((props: CartItemProps) => {
   const onDeleteClickHandler = useCallback(() => {
     onDeleteClick?.(item);
   }, [item, onDeleteClick]);
+
+  const onExtendedProductInfoClickHandler = useCallback(() => {
+    onOpenExtendedProductInfo?.(item.item);
+  }, [onOpenExtendedProductInfo, item.item]);
 
   return (
     <Card className={classNames(className, cls.CartItem)}>
@@ -72,13 +80,21 @@ export const CartItem = memo((props: CartItemProps) => {
         price={(item.count * item.item.price).toFixed(2)}
         className={cls.total_price}
       />
-      <Button
-        className={cls.delete_button}
-        buttonTheme={'link'}
-        onClick={onDeleteClickHandler}
-      >
-        <TrashBoxSVG />
-      </Button>
+      <div className={cls.additional_buttons}>
+        <Button
+          buttonTheme={'link'}
+          className={cls.add_to_favs_button}
+        >
+          <EyeSVG onClick={onExtendedProductInfoClickHandler} />
+        </Button>
+        <Button
+          className={cls.delete_button}
+          buttonTheme={'link'}
+          onClick={onDeleteClickHandler}
+        >
+          <TrashBoxSVG />
+        </Button>
+      </div>
     </Card>
   );
 });

@@ -59,10 +59,13 @@
     justify-content: space-between;
 }
 
-.delete_button {
+.additional_buttons {
     position: absolute;
     top: 18px;
     right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 @media screen and (max-width: 480px) {
