@@ -5,10 +5,13 @@
     position: relative;
 }
 
-.add_to_favs_button {
+.additional_buttons {
     position: absolute;
     top: 20px;
     right: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .favs_icon {
@@ -90,4 +93,9 @@
 
 .button {
     font-weight: var(--fw-semi-bold);
+}
+
+.footer_buttons {
+    display: flex;
+    gap: 15px;
 }

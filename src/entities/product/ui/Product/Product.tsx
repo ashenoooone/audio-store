@@ -7,6 +7,7 @@ import { Card } from '~/shared/ui/Card';
 import { Button } from '~/shared/ui/Button';
 import { useTranslation } from 'react-i18next';
 import { FilledHeartSVG } from '~/shared/assets/FilledHeartSVG.tsx';
+import { EyeSVG } from '~/shared/assets/EyeSVG.tsx';
 
 interface ProductProps {
   className?: string;
@@ -36,17 +37,25 @@ export const Product = memo((props: ProductProps) => {
 
   return (
     <Card className={classNames(className, cls.Product)}>
-      <Button
-        buttonTheme={'link'}
-        onClick={onToggleFavsClick}
-        className={cls.add_to_favs_button}
-      >
-        <FilledHeartSVG
-          className={classNames(cls.favs_icon, {
-            [cls.favs_icon_active]: inFavs,
-          })}
-        />
-      </Button>
+      <div className={cls.additional_buttons}>
+        <Button
+          buttonTheme={'link'}
+          className={cls.add_to_favs_button}
+        >
+          <EyeSVG />
+        </Button>
+        <Button
+          buttonTheme={'link'}
+          onClick={onToggleFavsClick}
+          className={cls.add_to_favs_button}
+        >
+          <FilledHeartSVG
+            className={classNames(cls.favs_icon, {
+              [cls.favs_icon_active]: inFavs,
+            })}
+          />
+        </Button>
+      </div>
       <img
         className={cls.image}
         src={product?.img}
@@ -69,13 +78,15 @@ export const Product = memo((props: ProductProps) => {
             <StarSVG />
             {product?.rate}
           </div>
-          <Button
-            buttonTheme={'link'}
-            className={cls.button}
-            onClick={onBuyClickHandler}
-          >
-            {t('Купить')}
-          </Button>
+          <div className={cls.footer_buttons}>
+            <Button
+              buttonTheme={'link'}
+              className={cls.button}
+              onClick={onBuyClickHandler}
+            >
+              {t('Купить')}
+            </Button>
+          </div>
         </div>
       </div>
     </Card>

@@ -8,7 +8,6 @@ import image_4 from '~/shared/assets/mock/4.png';
 import image_5 from '~/shared/assets/mock/5.png';
 import image_6 from '~/shared/assets/mock/6.png';
 import { ProductSections } from '~/widgets/ProductSections';
-import { Modal } from '~/shared/ui/Modal';
 
 interface MainPageProps {
   className?: string;
@@ -86,13 +85,6 @@ export const MainPage = (props: MainPageProps) => {
   const [open, setOpen] = useState(false);
   return (
     <Page className={className}>
-      <button onClick={() => setOpen(true)}>OPEN MODAL</button>
-      <Modal onClose={() => setOpen(false)} isOpen={open}>
-        <p>hello world</p>
-        <p>hello world</p>
-        <p>hello world</p>
-        <p>hello world</p>
-      </Modal>
       <ProductSections sections={items} />
     </Page>
   );
