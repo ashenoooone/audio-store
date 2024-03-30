@@ -38,6 +38,7 @@ export const Product = (props: ProductProps) => {
   return (
     <Card className={classNames(className, cls.Product)}>
       <Button
+        buttonTheme={'link'}
         onClick={onToggleFavsClick}
         className={cls.add_to_favs_button}
       >
@@ -69,7 +70,11 @@ export const Product = (props: ProductProps) => {
             <StarSVG />
             {product?.rate}
           </div>
-          <Button className={cls.button} onClick={onBuyClickHandler}>
+          <Button
+            buttonTheme={'link'}
+            className={cls.button}
+            onClick={onBuyClickHandler}
+          >
             {t('Купить')}
           </Button>
         </div>

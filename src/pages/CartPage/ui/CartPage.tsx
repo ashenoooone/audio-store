@@ -1,11 +1,11 @@
 import React from 'react';
 import { Page } from '~/shared/ui/Page';
+import { Cart } from '~/widgets/Cart';
 
-interface CartPageProps {
-  className?: string;
-}
-
-export const CartPage = (props: CartPageProps) => {
-  const { className = '' } = props;
-  return <Page className={className}></Page>;
+export const CartPage = () => {
+  return (
+    <Page>
+      <Cart />
+    </Page>
+  );
 };

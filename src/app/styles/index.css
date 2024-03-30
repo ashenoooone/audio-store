@@ -6,10 +6,11 @@
     --primary-color: #FFA542;
     --primary-muted: #FFCE7F;
     --text-color: #1C1C27;
+    --black: #101010;;
     --secondary-color: #838383;
     --bg-color: #EAEAEA;
     --white: #fff;
-    --red: #e84848;
+    --red: #DF6464;
 
     /* fonts-weights */
     --fw-semi-bold: 600;
@@ -35,6 +36,10 @@
     --font-size-md: 17px;
     --font-line-md: 21px;
     --font-md: var(--font-size-md) / var(--font-line-md) var(--font-family-name);
+
+    --fons-size-smd: 15px;
+    --font-line-smd: 18px;
+    --font-smd: var(--fons-size-smd) / var(--font-line-smd) var(--font-family-name);
 
     --font-size-sm: 13px;
     --font-line-sm: 16px;

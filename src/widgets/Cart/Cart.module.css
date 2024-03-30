@@ -1,0 +1,16 @@
+.Cart {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: start;
+}
+
+.cart_list {
+    flex-basis: 66%;
+    flex-grow: 0;
+}
+
+.cart_total {
+    flex-basis: 33%;
+    flex-grow: 0;
+}

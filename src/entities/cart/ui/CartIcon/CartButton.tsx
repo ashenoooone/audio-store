@@ -15,6 +15,7 @@ export const CartButton = (props: CartProps) => {
   const { className = '', itemsInCart, ...rest } = props;
   return (
     <Button
+      buttonTheme={'link'}
       className={classNames(cls.CartIconButton, className)}
       {...rest}
     >

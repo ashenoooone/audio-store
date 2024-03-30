@@ -1,0 +1,30 @@
+.CartTotal {
+    padding: 0;
+}
+
+.heading {
+    display: flex;
+    padding: 22px 22px 0;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+
+.CartTotal p {
+    font-weight: var(--fw-semi-bold);
+    margin: 0;
+}
+
+.registration_button {
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .CartTotal p:first-child {
+        display: none;
+    }
+
+    .CartTotal p {
+        margin: 0 auto;
+    }
+}

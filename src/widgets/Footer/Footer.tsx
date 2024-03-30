@@ -53,6 +53,7 @@ export const Footer = (props: FooterProps) => {
         <div className={cls.lang_toggler_container}>
           <PlanetSVG />
           <Button
+            buttonTheme={'link'}
             className={
               i18n.language === 'ru' ? cls.active_language : ''
             }
@@ -61,6 +62,7 @@ export const Footer = (props: FooterProps) => {
             Рус
           </Button>
           <Button
+            buttonTheme={'link'}
             className={
               i18n.language === 'en-US' ? cls.active_language : ''
             }

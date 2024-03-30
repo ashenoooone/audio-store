@@ -5,6 +5,22 @@
     outline: none;
     padding: 0;
     transition: opacity 0.1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.default {
+    background: var(--black);
+    border-radius: 20px;
+    padding: 20px 14px;
+    color: var(--white);
+}
+
+
+.circle {
+    padding: 8px;
+    border-radius: 50%;
 }
 
 .Button:hover {

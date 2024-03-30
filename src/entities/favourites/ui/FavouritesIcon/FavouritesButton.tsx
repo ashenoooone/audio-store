@@ -15,6 +15,7 @@ export const FavouritesButton = (props: FavouritesIconProps) => {
   const { className = '', itemsInFavs, ...rest } = props;
   return (
     <Button
+      buttonTheme={'link'}
       className={classNames(cls.FavouritesIconButton, className)}
       {...rest}
     >
