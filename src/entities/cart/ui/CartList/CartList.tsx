@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 import cls from './CartList.module.css';
 import { CartItemType } from '../../model/types.ts';
@@ -12,7 +12,7 @@ interface CartListProps {
   onDeleteClick?: (cartItem: CartItemType) => void;
 }
 
-export const CartList = (props: CartListProps) => {
+export const CartList = memo((props: CartListProps) => {
   const {
     className = '',
     items,
@@ -33,4 +33,4 @@ export const CartList = (props: CartListProps) => {
       ))}
     </div>
   );
-};
+});

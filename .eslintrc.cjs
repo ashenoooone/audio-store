@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     'import/no-unresolved': [0],
     'import/named': [0],
+    'react/display-name': [0],
     'react/prop-types': [0],
     'react/react-in-jsx-scope': [0],
     '@typescript-eslint/no-unused-vars': [0],

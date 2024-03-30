@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, memo, ReactNode } from 'react';
 import classNames from 'classnames';
 import cls from './Button.module.css';
 
@@ -11,7 +11,7 @@ interface ButtonProps
   circle?: boolean;
 }
 
-export const Button = (props: ButtonProps) => {
+export const Button = memo((props: ButtonProps) => {
   const {
     className = '',
     children,
@@ -32,4 +32,4 @@ export const Button = (props: ButtonProps) => {
       {children}
     </button>
   );
-};
+});

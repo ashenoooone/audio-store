@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import cls from './CartItem.module.css';
 import classNames from 'classnames';
 import { CartItemType } from '~/entities/cart';
@@ -16,7 +16,7 @@ interface CartItemProps {
   onDeleteClick?: (cartItem: CartItemType) => void;
 }
 
-export const CartItem = (props: CartItemProps) => {
+export const CartItem = memo((props: CartItemProps) => {
   const {
     className = '',
     item,
@@ -80,4 +80,4 @@ export const CartItem = (props: CartItemProps) => {
       </Button>
     </Card>
   );
-};
+});

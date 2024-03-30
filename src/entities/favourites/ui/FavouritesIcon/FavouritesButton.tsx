@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, memo } from 'react';
 import classNames from 'classnames';
 import cls from './FavouritesIcon.module.css';
 import { Button } from '~/shared/ui/Button';
@@ -11,7 +11,7 @@ interface FavouritesIconProps
   itemsInFavs?: number;
 }
 
-export const FavouritesButton = (props: FavouritesIconProps) => {
+export const FavouritesButton = memo((props: FavouritesIconProps) => {
   const { className = '', itemsInFavs, ...rest } = props;
   return (
     <Button
@@ -25,4 +25,4 @@ export const FavouritesButton = (props: FavouritesIconProps) => {
       )}
     </Button>
   );
-};
+});

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { Logo } from '~/shared/ui/Logo';
 import cls from './Footer.module.css';
 import classNames from 'classnames';
@@ -16,7 +16,7 @@ interface FooterProps {
   className?: string;
 }
 
-export const Footer = (props: FooterProps) => {
+export const Footer = memo((props: FooterProps) => {
   const { className = '' } = props;
   const navigate = useNavigate();
 
@@ -85,4 +85,4 @@ export const Footer = (props: FooterProps) => {
       </div>
     </div>
   );
-};
+});

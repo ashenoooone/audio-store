@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { ProductList, ProductType } from '~/entities/product';
 import cls from './ProductSections.module.css';
 import { useCartStore } from '~/entities/cart';
@@ -9,7 +9,7 @@ interface ProductSectionsProps {
   sections?: Record<string, ProductType[]>;
 }
 
-export const ProductSections = (props: ProductSectionsProps) => {
+export const ProductSections = memo((props: ProductSectionsProps) => {
   const addToCart = useCartStore.use.addToCart();
   const toggleInFavs = useFavouritesStore.use.toggleItemInFavs();
   const favsList = useFavouritesStore.use.items();
@@ -46,4 +46,4 @@ export const ProductSections = (props: ProductSectionsProps) => {
         ))}
     </div>
   );
-};
+});

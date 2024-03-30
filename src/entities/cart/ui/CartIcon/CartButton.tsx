@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, memo } from 'react';
 import { CartSVG } from '~/shared/assets/CartSVG.tsx';
 import classNames from 'classnames';
 import cls from './CartIcon.module.css';
@@ -11,7 +11,7 @@ interface CartProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
 }
 
-export const CartButton = (props: CartProps) => {
+export const CartButton = memo((props: CartProps) => {
   const { className = '', itemsInCart, ...rest } = props;
   return (
     <Button
@@ -25,4 +25,4 @@ export const CartButton = (props: CartProps) => {
       )}
     </Button>
   );
-};
+});

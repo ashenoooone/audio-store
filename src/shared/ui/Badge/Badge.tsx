@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, memo } from 'react';
 import classNames from 'classnames';
 import cls from './Badge.module.css';
 
@@ -9,7 +9,7 @@ interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
   value: number | string;
 }
 
-export const Badge = (props: BadgeProps) => {
+export const Badge = memo((props: BadgeProps) => {
   const {
     className = '',
     value,
@@ -26,4 +26,4 @@ export const Badge = (props: BadgeProps) => {
       {value}
     </div>
   );
-};
+});

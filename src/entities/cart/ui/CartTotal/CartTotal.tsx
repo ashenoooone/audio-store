@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cls from './CartTotal.module.css';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +10,7 @@ interface CartTotalProps {
   totalCartCost: number;
 }
 
-export const CartTotal = (props: CartTotalProps) => {
+export const CartTotal = memo((props: CartTotalProps) => {
   const { className = '', totalCartCost } = props;
 
   const { t } = useTranslation();
@@ -26,4 +26,4 @@ export const CartTotal = (props: CartTotalProps) => {
       </Button>
     </Card>
   );
-};
+});

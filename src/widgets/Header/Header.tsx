@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import cls from './Header.module.css';
 import classNames from 'classnames';
 import { Logo } from '~/shared/ui/Logo';
@@ -19,7 +19,7 @@ interface HeaderProps {
   className?: string;
 }
 
-export const Header = (props: HeaderProps) => {
+export const Header = memo((props: HeaderProps) => {
   const { className = '' } = props;
   const itemsInCart = useCartStore(getTotalCartLength);
   const itemsInFavs = useFavouritesStore(getTotalFavsLength);
@@ -52,4 +52,4 @@ export const Header = (props: HeaderProps) => {
       </div>
     </div>
   );
-};
+});

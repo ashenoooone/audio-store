@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cls from './Logo.module.css';
 import classNames from 'classnames';
 
@@ -7,7 +7,7 @@ interface LogoProps {
   onClick?: () => void;
 }
 
-export const Logo = (props: LogoProps) => {
+export const Logo = memo((props: LogoProps) => {
   const { className = '', onClick } = props;
   return (
     <h1
@@ -19,4 +19,4 @@ export const Logo = (props: LogoProps) => {
       QPICK
     </h1>
   );
-};
+});

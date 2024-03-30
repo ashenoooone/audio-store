@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { ProductType } from '../../model/types.ts';
 import cls from './Product.module.css';
 import classNames from 'classnames';
@@ -16,7 +16,7 @@ interface ProductProps {
   inFavs?: boolean;
 }
 
-export const Product = (props: ProductProps) => {
+export const Product = memo((props: ProductProps) => {
   const {
     inFavs,
     className = '',
@@ -80,4 +80,4 @@ export const Product = (props: ProductProps) => {
       </div>
     </Card>
   );
-};
+});

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ProductType } from '~/entities/product';
 import cls from './ProductList.module.css';
 import { Product } from '../Product/Product';
@@ -13,7 +13,7 @@ interface ProductListProps {
   onToggleItemInFavs?: (product: ProductType) => void;
 }
 
-export const ProductList = (props: ProductListProps) => {
+export const ProductList = memo((props: ProductListProps) => {
   const {
     className = '',
     onToggleItemInFavs,
@@ -38,4 +38,4 @@ export const ProductList = (props: ProductListProps) => {
       </div>
     </div>
   );
-};
+});
