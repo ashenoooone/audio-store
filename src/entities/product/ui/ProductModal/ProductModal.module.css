@@ -34,6 +34,10 @@
     margin-top: 10px;
 }
 
+.image {
+    max-width: 240px;
+}
+
 .price_container {
     display: flex;
     width: max-content;
@@ -66,3 +70,14 @@
     font: var(--font-sm);
 }
 
+@media screen and (max-width: 480px) {
+    .image {
+        max-width: 140px;
+    }
+
+    .ProductModal {
+        align-items: center;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+}

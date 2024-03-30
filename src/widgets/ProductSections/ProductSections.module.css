@@ -1,3 +1,9 @@
 .ProductSection:not(:last-child) {
     margin-bottom: 30px;
 }
+
+.title {
+    font: var(--font-xl);
+    font-weight: var(--fw-semi-bold);
+    margin: 0 0 13px;
+}

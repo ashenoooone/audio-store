@@ -55,10 +55,14 @@ export const Modal = (props: ModalProps) => {
     if (isOpen) {
       // @ts-expect-error ошибка реакта, видимо https://github.com/hibiken/react-places-autocomplete/issues/377
       window.addEventListener('keydown', onKeyDown);
+      document.body.classList.add(cls.hidden_scroll);
+    } else {
+      document.body.classList.remove(cls.hidden_scroll);
     }
     return () => {
       // @ts-expect-error ошибка реакта, видимо https://github.com/hibiken/react-places-autocomplete/issues/377
       window.removeEventListener('keydown', onKeyDown);
+      document.body.classList.remove(cls.hidden_scroll);
       clearTimeout(closeTimerRef.current);
     };
   }, [isOpen, onKeyDown]);

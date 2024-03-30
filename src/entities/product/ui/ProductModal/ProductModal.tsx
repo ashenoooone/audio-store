@@ -51,7 +51,11 @@ export const ProductModal = (props: ProductModalProps) => {
       onClose={onClose}
       className={classNames(className, cls.ProductModal)}
     >
-      <img src={product.img} alt={product.title} />
+      <img
+        className={cls.image}
+        src={product.img}
+        alt={product.title}
+      />
       <div className={cls.main_info}>
         <div className={cls.heading}>
           <h1 className={cls.title}>{product.title}</h1>
@@ -79,7 +83,9 @@ export const ProductModal = (props: ProductModalProps) => {
             {t('Добавить в корзину')}
           </Button>
           <Button onClick={onToggleFavsClick} className={cls.button}>
-            {t('Добавить в избранное')}
+            {inFavs
+              ? t('Убрать из избранного')
+              : t('Добавить в избранное')}
           </Button>
         </div>
       </div>

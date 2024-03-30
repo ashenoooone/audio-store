@@ -5,6 +5,10 @@
     pointer-events: none;
 }
 
+.hidden_scroll  {
+    overflow-y: hidden;
+}
+
 .open {
     opacity: 1;
     pointer-events: auto;
@@ -13,6 +17,7 @@
 .content {
     scale: 0.5;
     transition: scale ease 0.3s;
+    margin: 5px;
 }
 
 .open .content {
@@ -38,4 +43,12 @@
     right: -15px;
     top: -15px;
     color: var(--white);
+}
+
+@media screen and (max-width: 768px) {
+    .close_btn {
+        right: 15px;
+        top: 15px;
+        color: var(--secondary-color);
+    }
 }
