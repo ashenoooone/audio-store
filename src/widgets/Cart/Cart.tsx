@@ -7,6 +7,7 @@ import {
   useCartStore,
 } from '~/entities/cart';
 import cls from './Cart.module.css';
+import { useTranslation } from 'react-i18next';
 
 export const Cart = () => {
   const itemsInCart = useCartStore.use.items();
@@ -14,6 +15,7 @@ export const Cart = () => {
   const onDeleteFromCartClick = useCartStore.use.removeFromCart();
   const onDecreaseItemInCart = useCartStore.use.decreaseInCart();
   const onIncreaseItemInCart = useCartStore.use.increaseInCart();
+  const { t } = useTranslation();
 
   const onCartListDecreaseClick = useCallback(
     (cartItem: CartItemType) => {
@@ -38,17 +40,19 @@ export const Cart = () => {
 
   return (
     <div className={cls.Cart}>
-      <CartList
-        className={cls.cart_list}
-        items={itemsInCart}
-        onDecreaseClick={onCartListDecreaseClick}
-        onDeleteClick={onCartListDeleteClick}
-        onIncreaseClick={onCartListIncreaseClick}
-      />
-      <CartTotal
-        className={cls.cart_total}
-        totalCartCost={totalCartCost}
-      />
+      <h1 className={cls.title}>{t('Корзина')}</h1>
+      <div className={cls.content}>
+        <CartList
+          items={itemsInCart}
+          onDecreaseClick={onCartListDecreaseClick}
+          onDeleteClick={onCartListDeleteClick}
+          onIncreaseClick={onCartListIncreaseClick}
+        />
+        <CartTotal
+          className={cls.cart_total}
+          totalCartCost={totalCartCost}
+        />
+      </div>
     </div>
   );
 };
