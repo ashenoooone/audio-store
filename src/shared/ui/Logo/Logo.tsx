@@ -10,7 +10,12 @@ interface LogoProps {
 export const Logo = (props: LogoProps) => {
   const { className = '', onClick } = props;
   return (
-    <h1 onClick={onClick} className={classNames(cls.Logo, className)}>
+    <h1
+      onClick={onClick}
+      className={classNames(cls.Logo, className, {
+        [cls.clickable]: onClick !== undefined,
+      })}
+    >
       QPICK
     </h1>
   );

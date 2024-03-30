@@ -11,7 +11,7 @@ interface CartProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
 }
 
-export const CartIcon = (props: CartProps) => {
+export const CartButton = (props: CartProps) => {
   const { className = '', itemsInCart, ...rest } = props;
   return (
     <Button

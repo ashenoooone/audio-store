@@ -11,7 +11,7 @@ interface FavouritesIconProps
   itemsInFavs?: number;
 }
 
-export const FavouritesIcon = (props: FavouritesIconProps) => {
+export const FavouritesButton = (props: FavouritesIconProps) => {
   const { className = '', itemsInFavs, ...rest } = props;
   return (
     <Button

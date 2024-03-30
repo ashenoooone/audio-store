@@ -3,3 +3,12 @@
     margin: 0;
     font-weight: bold;
 }
+
+.clickable {
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.clickable:hover {
+    opacity: .8;
+}
