@@ -28,7 +28,9 @@ export const ProductList = memo((props: ProductListProps) => {
       <div className={cls.list}>
         {products.map((p) => (
           <Product
-            inFavs={favsList?.includes(p)}
+            inFavs={Boolean(
+              favsList?.find((item) => item.title === p.title),
+            )}
             onBuyClick={onBuyClick}
             key={p.title}
             product={p}
