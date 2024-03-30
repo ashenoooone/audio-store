@@ -24,7 +24,6 @@ export const Product = (props: ProductProps) => {
     onToggleItemInFavs,
     onBuyClick,
   } = props;
-
   const { t } = useTranslation('main');
 
   const onBuyClickHandler = useCallback(() => {
