@@ -98,3 +98,13 @@
     display: flex;
     gap: 15px;
 }
+
+@media screen and (max-width: 768px) {
+    .image {
+        max-width: 140px;
+    }
+
+    .Product {
+        padding: 15px;
+    }
+}
