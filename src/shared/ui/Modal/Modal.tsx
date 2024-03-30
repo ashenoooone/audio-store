@@ -10,8 +10,10 @@ import cls from './Modal.module.css';
 import classNames from 'classnames';
 import { Card } from '~/shared/ui/Card';
 import { Portal } from '~/shared/ui/Portal';
+import { Button } from '~/shared/ui/Button';
+import { CrossSVG } from '~/shared/assets/CrossSVG.tsx';
 
-interface ModalProps {
+export interface ModalProps {
   className?: string;
   children?: ReactNode;
   onClose?: () => void;
@@ -64,14 +66,24 @@ export const Modal = (props: ModalProps) => {
   return (
     <Portal>
       <div
-        className={classNames(className, cls.Modal, {
+        className={classNames(cls.Modal, {
           [cls.open]: isOpen,
           [cls.closing]: isClosing,
         })}
       >
         <div className={cls.overlay} onClick={onOverlayClick}>
-          <Card className={cls.content} onClick={onContentClick}>
+          <Card
+            className={classNames(cls.content, className)}
+            onClick={onContentClick}
+          >
             {children}
+            <Button
+              onClick={onOverlayClick}
+              className={cls.close_btn}
+              buttonTheme={'link'}
+            >
+              <CrossSVG />
+            </Button>
           </Card>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { Button } from '~/shared/ui/Button';
 import { MinusSVG } from '~/shared/assets/MinusSVG.tsx';
 import { PlusSVG } from '~/shared/assets/PlusSVG.tsx';
 import { TrashBoxSVG } from '~/shared/assets/TrashBoxSVG.tsx';
+import { Price } from '~/shared/ui/Price';
 
 interface CartItemProps {
   className?: string;
@@ -65,12 +66,12 @@ export const CartItem = memo((props: CartItemProps) => {
       </div>
       <div className={cls.main_info}>
         <h2 className={cls.title}>{item.item.title}</h2>
-        <p className={cls.price}>{item.item.price}&nbsp;₽</p>
+        <Price className={cls.price} price={item.item.price} />
       </div>
-
-      <p className={cls.total_price}>
-        {(item.count * item.item.price).toFixed(2)}&nbsp;₽
-      </p>
+      <Price
+        price={(item.count * item.item.price).toFixed(2)}
+        className={cls.total_price}
+      />
       <Button
         className={cls.delete_button}
         buttonTheme={'link'}

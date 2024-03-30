@@ -1,5 +1,10 @@
 import React, { memo, useCallback } from 'react';
-import { ProductList, ProductType } from '~/entities/product';
+import {
+  ProductList,
+  ProductModal,
+  ProductType,
+  useProductModalStore,
+} from '~/entities/product';
 import cls from './ProductSections.module.css';
 import { useCartStore } from '~/entities/cart';
 import { useFavouritesStore } from '~/entities/favourites';
@@ -13,6 +18,10 @@ export const ProductSections = memo((props: ProductSectionsProps) => {
   const addToCart = useCartStore.use.addToCart();
   const toggleInFavs = useFavouritesStore.use.toggleItemInFavs();
   const favsList = useFavouritesStore.use.items();
+  const currentProduct = useProductModalStore.use.item?.();
+  const openProductModal = useProductModalStore.use.open?.();
+  const closeProductModal = useProductModalStore.use.onClose?.();
+  const isProductModalOpen = useProductModalStore.use.isOpen?.();
 
   const onProductListBuyClick = useCallback(
     (product: ProductType) => {
@@ -28,6 +37,17 @@ export const ProductSections = memo((props: ProductSectionsProps) => {
     [toggleInFavs],
   );
 
+  const onProductListOpenExtendedProductInfo = useCallback(
+    (product: ProductType) => {
+      openProductModal?.(product);
+    },
+    [openProductModal],
+  );
+
+  const onProductModalClose = useCallback(() => {
+    closeProductModal?.();
+  }, [closeProductModal]);
+
   const { className = '', sections } = props;
 
   return (
@@ -42,8 +62,19 @@ export const ProductSections = memo((props: ProductSectionsProps) => {
             title={title}
             onBuyClick={onProductListBuyClick}
             onToggleItemInFavs={onProductListToggleItemInFavsClick}
+            onOpenExtendedProductInfo={
+              onProductListOpenExtendedProductInfo
+            }
           />
         ))}
+      <ProductModal
+        isOpen={isProductModalOpen}
+        product={currentProduct}
+        onClose={onProductModalClose}
+        onBuyClick={onProductListBuyClick}
+        onToggleItemInFavs={onProductListToggleItemInFavsClick}
+        favsList={favsList}
+      />
     </div>
   );
 });

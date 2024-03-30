@@ -2,12 +2,13 @@ import React, { memo, useCallback } from 'react';
 import { ProductType } from '../../model/types.ts';
 import cls from './Product.module.css';
 import classNames from 'classnames';
-import { StarSVG } from '~/shared/assets/StarSVG.tsx';
 import { Card } from '~/shared/ui/Card';
 import { Button } from '~/shared/ui/Button';
 import { useTranslation } from 'react-i18next';
 import { FilledHeartSVG } from '~/shared/assets/FilledHeartSVG.tsx';
 import { EyeSVG } from '~/shared/assets/EyeSVG.tsx';
+import { Rating } from '~/shared/ui/Rating';
+import { Price } from '~/shared/ui/Price';
 
 interface ProductProps {
   className?: string;
@@ -15,6 +16,7 @@ interface ProductProps {
   onBuyClick?: (product: ProductType) => void;
   onToggleItemInFavs?: (product: ProductType) => void;
   inFavs?: boolean;
+  onOpenExtendedProductInfo?: (product: ProductType) => void;
 }
 
 export const Product = memo((props: ProductProps) => {
@@ -24,6 +26,7 @@ export const Product = memo((props: ProductProps) => {
     product,
     onToggleItemInFavs,
     onBuyClick,
+    onOpenExtendedProductInfo,
   } = props;
   const { t } = useTranslation('main');
 
@@ -35,6 +38,10 @@ export const Product = memo((props: ProductProps) => {
     onToggleItemInFavs?.(product);
   }, [onToggleItemInFavs, product]);
 
+  const onExtendedProductInfoClickHandler = useCallback(() => {
+    onOpenExtendedProductInfo?.(product);
+  }, [onOpenExtendedProductInfo, product]);
+
   return (
     <Card className={classNames(className, cls.Product)}>
       <div className={cls.additional_buttons}>
@@ -42,7 +49,7 @@ export const Product = memo((props: ProductProps) => {
           buttonTheme={'link'}
           className={cls.add_to_favs_button}
         >
-          <EyeSVG />
+          <EyeSVG onClick={onExtendedProductInfoClickHandler} />
         </Button>
         <Button
           buttonTheme={'link'}
@@ -65,19 +72,17 @@ export const Product = memo((props: ProductProps) => {
         <div className={cls.heading}>
           <h2 className={cls.title}>{product?.title}</h2>
           <div className={cls.price_container}>
-            <p className={cls.price}>{product?.price}&nbsp;₽</p>
+            <Price className={cls.price} price={product?.price} />
             {product?.old_price && (
-              <p className={cls.old_price}>
-                {product?.old_price}&nbsp;₽
-              </p>
+              <Price
+                className={cls.old_price}
+                price={product?.old_price}
+              />
             )}
           </div>
         </div>
         <div className={cls.footer}>
-          <div className={cls.rating}>
-            <StarSVG />
-            {product?.rate}
-          </div>
+          <Rating rate={product.rate} />
           <div className={cls.footer_buttons}>
             <Button
               buttonTheme={'link'}

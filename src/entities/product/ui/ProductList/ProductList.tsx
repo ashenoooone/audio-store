@@ -10,6 +10,7 @@ interface ProductListProps {
   title?: string;
   favsList?: ProductType[];
   onBuyClick?: (product: ProductType) => void;
+  onOpenExtendedProductInfo?: (product: ProductType) => void;
   onToggleItemInFavs?: (product: ProductType) => void;
 }
 
@@ -21,6 +22,7 @@ export const ProductList = memo((props: ProductListProps) => {
     onBuyClick,
     products,
     favsList,
+    onOpenExtendedProductInfo,
   } = props;
   return (
     <div className={classNames(className, cls.ProductList)}>
@@ -28,6 +30,7 @@ export const ProductList = memo((props: ProductListProps) => {
       <div className={cls.list}>
         {products.map((p) => (
           <Product
+            onOpenExtendedProductInfo={onOpenExtendedProductInfo}
             inFavs={Boolean(
               favsList?.find((item) => item.title === p.title),
             )}
