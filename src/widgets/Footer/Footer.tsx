@@ -10,6 +10,7 @@ import { PlanetSVG } from '~/shared/assets/PlanetSVG.tsx';
 import { VKSVG } from '~/shared/assets/VKSVG.tsx';
 import { TelegramSVG } from '~/shared/assets/TelegramSVG.tsx';
 import { WhatsappSVG } from '~/shared/assets/WhatsappSVG.tsx';
+import { useNavigate } from 'react-router-dom';
 
 interface FooterProps {
   className?: string;
@@ -17,8 +18,13 @@ interface FooterProps {
 
 export const Footer = (props: FooterProps) => {
   const { className = '' } = props;
+  const navigate = useNavigate();
 
   const { t, i18n } = useTranslation();
+
+  const onLogoClick = useCallback(() => {
+    navigate(RoutesPaths.main);
+  }, [navigate]);
 
   const setEngLanguage = useCallback(
     async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -36,9 +42,9 @@ export const Footer = (props: FooterProps) => {
 
   return (
     <div className={classNames(className, cls.Footer)}>
-      <Logo />
+      <Logo onClick={onLogoClick} />
       <div className={cls.links}>
-        <Link to={RoutesPaths.cart}>{t('Избранное')}</Link>
+        <Link to={RoutesPaths.favourites}>{t('Избранное')}</Link>
         <Link to={RoutesPaths.cart}>{t('Корзина')}</Link>
         <Link to={RoutesPaths.cart}>{t('Контакты')}</Link>
       </div>
