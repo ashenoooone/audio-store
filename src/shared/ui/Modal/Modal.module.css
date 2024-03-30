@@ -1,0 +1,34 @@
+.Modal {
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.content {
+    scale: 0.5;
+    transition: scale ease 0.3s;
+}
+
+.open .content {
+    scale: 1;
+}
+
+.closing .content {
+    scale: 0.5;
+}
+
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

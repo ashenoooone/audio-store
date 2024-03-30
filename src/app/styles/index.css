@@ -11,6 +11,7 @@
     --bg-color: #EAEAEA;
     --white: #fff;
     --red: #DF6464;
+    --overlay-color: rgba(0, 0, 0, 0.8);
 
     /* fonts-weights */
     --fw-semi-bold: 600;
