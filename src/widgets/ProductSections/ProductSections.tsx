@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { ProductList, ProductType } from '~/entities/product';
 import cls from './ProductSections.module.css';
 import { useCartStore } from '~/entities/cart';
+import { useFavouritesStore } from '~/entities/favourites';
 
 interface ProductSectionsProps {
   className?: string;
@@ -10,6 +11,8 @@ interface ProductSectionsProps {
 
 export const ProductSections = (props: ProductSectionsProps) => {
   const addToCart = useCartStore.use.addToCart();
+  const toggleInFavs = useFavouritesStore.use.toggleItemInFavs();
+  const favsList = useFavouritesStore.use.items();
 
   const onProductListBuyClick = useCallback(
     (product: ProductType) => {
@@ -18,17 +21,27 @@ export const ProductSections = (props: ProductSectionsProps) => {
     [addToCart],
   );
 
+  const onProductListToggleItemInFavsClick = useCallback(
+    (product: ProductType) => {
+      toggleInFavs(product);
+    },
+    [toggleInFavs],
+  );
+
   const { className = '', sections } = props;
+
   return (
     <div className={className}>
       {sections &&
-        Object.entries(sections).map(([k, v], index) => (
+        Object.entries(sections).map(([title, product], index) => (
           <ProductList
             className={cls.ProductSection}
             key={'section' + index}
-            products={v}
-            title={k}
+            products={product}
+            favsList={favsList}
+            title={title}
             onBuyClick={onProductListBuyClick}
+            onToggleItemInFavs={onProductListToggleItemInFavsClick}
           />
         ))}
     </div>

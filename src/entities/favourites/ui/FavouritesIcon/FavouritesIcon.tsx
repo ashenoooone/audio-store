@@ -8,18 +8,20 @@ import { Badge } from '~/shared/ui/Badge';
 interface FavouritesIconProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  itemsInCart?: number;
+  itemsInFavs?: number;
 }
 
 export const FavouritesIcon = (props: FavouritesIconProps) => {
-  const { className = '', itemsInCart, ...rest } = props;
+  const { className = '', itemsInFavs, ...rest } = props;
   return (
     <Button
       className={classNames(cls.FavouritesIconButton, className)}
       {...rest}
     >
       <HeartSVG />
-      {itemsInCart && <Badge value={itemsInCart} />}
+      {itemsInFavs !== undefined && itemsInFavs > 0 && (
+        <Badge value={itemsInFavs} />
+      )}
     </Button>
   );
 };

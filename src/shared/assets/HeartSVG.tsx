@@ -8,7 +8,6 @@ export const HeartSVG = (props: React.SVGProps<SVGSVGElement>) => {
       width={width}
       height={height}
       viewBox="0 0 23 20"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

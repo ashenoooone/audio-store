@@ -7,7 +7,11 @@ import {
   getTotalCartLength,
   useCartStore,
 } from '~/entities/cart';
-import { FavouritesIcon } from '~/entities/favourites';
+import {
+  FavouritesIcon,
+  getTotalFavsLength,
+  useFavouritesStore,
+} from '~/entities/favourites';
 
 interface HeaderProps {
   className?: string;
@@ -16,12 +20,13 @@ interface HeaderProps {
 export const Header = (props: HeaderProps) => {
   const { className = '' } = props;
   const itemsInCart = useCartStore(getTotalCartLength);
+  const itemsInFavs = useFavouritesStore(getTotalFavsLength);
 
   return (
     <div className={classNames(cls.Header, className)}>
       <Logo />
       <div className={cls.buttons}>
-        <FavouritesIcon itemsInCart={12} />
+        <FavouritesIcon itemsInFavs={itemsInFavs} />
         <CartIcon itemsInCart={itemsInCart} />
       </div>
     </div>

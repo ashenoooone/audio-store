@@ -6,15 +6,24 @@ import { StarSVG } from '~/shared/assets/StarSVG.tsx';
 import { Card } from '~/shared/ui/Card';
 import { Button } from '~/shared/ui/Button';
 import { useTranslation } from 'react-i18next';
+import { FilledHeartSVG } from '~/shared/assets/FilledHeartSVG.tsx';
 
 interface ProductProps {
   className?: string;
   product: ProductType;
   onBuyClick?: (product: ProductType) => void;
+  onToggleItemInFavs?: (product: ProductType) => void;
+  inFavs?: boolean;
 }
 
 export const Product = (props: ProductProps) => {
-  const { className = '', product, onBuyClick } = props;
+  const {
+    inFavs,
+    className = '',
+    product,
+    onToggleItemInFavs,
+    onBuyClick,
+  } = props;
 
   const { t } = useTranslation('main');
 
@@ -22,8 +31,22 @@ export const Product = (props: ProductProps) => {
     onBuyClick?.(product);
   }, [onBuyClick, product]);
 
+  const onToggleFavsClick = useCallback(() => {
+    onToggleItemInFavs?.(product);
+  }, [onToggleItemInFavs, product]);
+
   return (
     <Card className={classNames(className, cls.Product)}>
+      <Button
+        onClick={onToggleFavsClick}
+        className={cls.add_to_favs_button}
+      >
+        <FilledHeartSVG
+          className={classNames(cls.favs_icon, {
+            [cls.favs_icon_active]: inFavs,
+          })}
+        />
+      </Button>
       <img
         className={cls.image}
         src={product?.img}

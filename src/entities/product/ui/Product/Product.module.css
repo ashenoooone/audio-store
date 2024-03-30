@@ -2,6 +2,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+}
+
+.add_to_favs_button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.favs_icon {
+    transition: all .1s ease-in-out;
+}
+
+.favs_icon_active {
+    color: #e84848;
+    fill: #e84848;
+}
+
+.favs_icon:hover {
+    scale: 1.1;
 }
 
 .image {

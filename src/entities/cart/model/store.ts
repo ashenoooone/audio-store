@@ -38,20 +38,16 @@ const useCartStoreBase = create<CartStoreType>()(
             ];
           } else {
             // если продукт найден, но количество === 1, то просто удаляем продукт из корзины
-            state.items = [
-              ...state.items.filter(
-                (p: CartItemType) => p.item.title !== title,
-              ),
-            ];
+            state.items = state.items.filter(
+              (p: CartItemType) => p.item.title !== title,
+            );
           }
         }),
       removeFromCart: (title: string) =>
         set((state) => {
-          state.items = [
-            ...state.items.filter(
-              (p: CartItemType) => p.item.title !== title,
-            ),
-          ];
+          state.items = state.items.filter(
+            (p: CartItemType) => p.item.title !== title,
+          );
         }),
       addToCart: (product) =>
         set((state) => {
@@ -60,7 +56,7 @@ const useCartStoreBase = create<CartStoreType>()(
     })),
     {
       name: 'cart-store',
-      storage: createJSONStorage(() => sessionStorage),
+      storage: createJSONStorage(() => localStorage),
     },
   ),
 );
