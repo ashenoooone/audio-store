@@ -16,5 +16,6 @@
   "Пункт выдачи": "Pick-up point",
   "Способ оплаты": "Payment method",
   "Киви": "QIWI",
-  "Картой": "Card"
+  "Картой": "Card",
+  "Реквизиты оплаты": "Payment details"
 }

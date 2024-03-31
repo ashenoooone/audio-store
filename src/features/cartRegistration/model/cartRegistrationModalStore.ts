@@ -10,6 +10,24 @@ import { createSelectors } from '~/shared/lib/createSelectors.ts';
 const useCartRegistrationModalStoreBase =
   create<CartRegistrationModalStoreType>()(
     immer((set) => ({
+      changePaymentCardDetails: (d) =>
+        set((state) => {
+          state.paymentDetails.card = { ...d };
+        }),
+      changePaymentQiwiDetails: (d) =>
+        set((state) => {
+          state.paymentDetails.qiwi = { ...d };
+        }),
+      paymentDetails: {
+        card: {
+          card_number: '',
+          card_cvv: '',
+          card_date: '',
+        },
+        qiwi: {
+          phone_number: '',
+        },
+      },
       data: {
         paymentType: 'debit_cart',
         shippingMethod: 'courier',

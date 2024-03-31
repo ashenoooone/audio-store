@@ -17,11 +17,29 @@ export type CartRegistrationModalStoreDataType = {
   shippingMethod?: ShippingMethod;
 };
 
+export type PaymentCardDetails = {
+  card_number: string;
+  card_cvv: string;
+  card_date: string;
+};
+
+export type PaymentQiwiDetails = {
+  phone_number: string;
+};
+
+export type PaymentDetailsType = {
+  card: PaymentCardDetails;
+  qiwi: PaymentQiwiDetails;
+};
+
 export type CartRegistrationModalStoreType = {
   data: CartRegistrationModalStoreDataType;
   isOpen?: boolean;
+  paymentDetails: PaymentDetailsType;
   onClose?: () => void;
   open?: () => void;
   changeShippingMethod?: (method: ShippingMethod) => void;
   changePaymentMethod?: (method: PaymentType) => void;
+  changePaymentCardDetails: (cardDetails: PaymentCardDetails) => void;
+  changePaymentQiwiDetails: (qiwiDetails: PaymentQiwiDetails) => void;
 };

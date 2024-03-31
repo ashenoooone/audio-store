@@ -11,6 +11,7 @@ import {
 } from '../../model/types.ts';
 import { ShippingMethods } from '../ShippingMethods/ShippingMethods.tsx';
 import { PaymentsMethods } from '../PaymentsMethods/PaymentsMethods.tsx';
+import { PaymentDetails } from '~/features/cartRegistration/ui/PaymentDetails/PaymentDetails.tsx';
 
 interface CartRegistrationModalProps
   extends Omit<ModalProps, 'children'> {
@@ -43,6 +44,7 @@ export const CartRegistrationModal = memo(
             Object.keys(PaymentMethodMapper) as PaymentType[]
           }
         />
+        <PaymentDetails selectedPaymentMethod={data?.paymentType} />
         <ShippingMethods
           onChange={onChangeShippingMethod}
           selectedShippingMethod={data?.shippingMethod}
