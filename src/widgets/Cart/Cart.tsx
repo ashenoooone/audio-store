@@ -14,21 +14,46 @@ import {
   useProductModalStore,
 } from '~/entities/product';
 import { useFavouritesStore } from '~/entities/favourites';
+import {
+  CartRegistrationModal,
+  useCartRegistrationModalStore,
+} from '~/features/cartRegistration';
+import {
+  PaymentType,
+  ShippingMethod,
+} from '~/features/cartRegistration/model/types.ts';
 
 export const Cart = () => {
+  // корзина
   const itemsInCart = useCartStore.use.items();
   const totalCartCost = useCartStore(getTotalCartPrice);
+  // хендлеры для корзины
   const onDeleteFromCartClick = useCartStore.use.removeFromCart();
   const onDecreaseItemInCart = useCartStore.use.decreaseInCart();
   const onIncreaseItemInCart = useCartStore.use.increaseInCart();
+  // данные и обработчики для расширенной информации для модалки товара
   const currentProduct = useProductModalStore.use.item?.();
   const openProductModal = useProductModalStore.use.open?.();
   const closeProductModal = useProductModalStore.use.onClose?.();
   const isProductModalOpen = useProductModalStore.use.isOpen?.();
   const { t } = useTranslation();
+  // хендлеры для карточки товара в корзине
   const addToCart = useCartStore.use.addToCart();
   const toggleInFavs = useFavouritesStore.use.toggleItemInFavs();
   const favsList = useFavouritesStore.use.items();
+  // данные и хендлеры для оформления корзины
+  const changeCartRegistrationPaymentMethod =
+    useCartRegistrationModalStore.use.changePaymentMethod?.();
+  const changeCartRegistrationShippingMethod =
+    useCartRegistrationModalStore.use.changeShippingMethod?.();
+  const isCartRegistrationModalOpen =
+    useCartRegistrationModalStore.use.isOpen?.();
+  const closeCartRegistrationModal =
+    useCartRegistrationModalStore.use.onClose?.();
+  const openCartRegistrationModal =
+    useCartRegistrationModalStore.use.open?.();
+  const cartRegistrationModalData =
+    useCartRegistrationModalStore.use.data?.();
 
   const onProductListBuyClick = useCallback(
     (product: ProductType) => {
@@ -76,6 +101,28 @@ export const Cart = () => {
     [openProductModal],
   );
 
+  const onCartRegistrationModalClose = useCallback(() => {
+    closeCartRegistrationModal?.();
+  }, [closeCartRegistrationModal]);
+
+  const onCartTotalGoToRegistration = useCallback(() => {
+    openCartRegistrationModal?.();
+  }, [openCartRegistrationModal]);
+
+  const onCartRegistrationModalChangeShippingMethod = useCallback(
+    (m: ShippingMethod) => {
+      changeCartRegistrationShippingMethod?.(m);
+    },
+    [changeCartRegistrationShippingMethod],
+  );
+
+  const onCartRegistrationModalChangePaymentMethod = useCallback(
+    (m: PaymentType) => {
+      changeCartRegistrationPaymentMethod?.(m);
+    },
+    [changeCartRegistrationPaymentMethod],
+  );
+
   return (
     <div className={cls.Cart}>
       <h1 className={cls.title}>{t('Корзина')}</h1>
@@ -93,6 +140,8 @@ export const Cart = () => {
         <CartTotal
           className={cls.cart_total}
           totalCartCost={totalCartCost}
+          onGoToRegistration={onCartTotalGoToRegistration}
+          cartItems={itemsInCart}
         />
       </div>
       <ProductModal
@@ -102,6 +151,17 @@ export const Cart = () => {
         onBuyClick={onProductListBuyClick}
         onToggleItemInFavs={onProductListToggleItemInFavsClick}
         favsList={favsList}
+      />
+      <CartRegistrationModal
+        isOpen={isCartRegistrationModalOpen}
+        onClose={onCartRegistrationModalClose}
+        data={cartRegistrationModalData}
+        onChangeShippingMethod={
+          onCartRegistrationModalChangeShippingMethod
+        }
+        onChangePaymentMethod={
+          onCartRegistrationModalChangePaymentMethod
+        }
       />
     </div>
   );

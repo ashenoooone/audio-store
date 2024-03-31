@@ -1,0 +1,23 @@
+.PaymentsMethods {}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.payment_method {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: var(--font-md);
+    font-weight: var(--fw-semi-bold);
+    cursor: pointer;
+    padding-left: 50px;
+    position: relative;
+}
+
+.check_icon {
+    position: absolute;
+    left: 20px;
+}
