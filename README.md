@@ -144,6 +144,34 @@ npm run preview
 
 При построении приложения ориентирвоался на FSD. Однако в целях экономия времени некоторые моменты игнорировал.
 
+Есть 6 основных слоев
+1. app
+2. entities
+3. features
+4. pages
+5. shared
+6. widgets
+
+Каждый слой состоит из слайсов. Например
+
+```
+Entities ( слой )
+    └
+    cart ( слайс )
+      └ model ( бизнес-логика слайса, напр.: стор, типы, селекторы )
+          └ selectors.ts
+          └ store.ts
+          └ types.ts
+      └ ui ( все необходимые юай компоненты для слайса )
+         └ CartIcon
+         └ CartList
+         └ CartTotal
+         └ CartItem
+               └ CartItem.tsx
+               └ CatrItem.module.css
+      └ index.ts (паблик апи для слайса)
+```
+
 ### shared 
 
 Cлой кода общего использования
