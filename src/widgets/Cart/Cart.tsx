@@ -178,9 +178,10 @@ export const Cart = () => {
       data?: CartRegistrationModalStoreDataType;
       paymentDetails?: PaymentDetailsType;
     }) => {
-      console.log(paymentDetails, data);
+      console.log(paymentDetails, data, totalCartCost);
+      closeCartRegistrationModal?.();
     },
-    [],
+    [closeCartRegistrationModal, totalCartCost],
   );
 
   return (

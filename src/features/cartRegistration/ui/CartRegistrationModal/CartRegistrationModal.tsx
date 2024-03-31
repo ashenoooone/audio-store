@@ -14,6 +14,7 @@ import { ShippingMethods } from '../ShippingMethods/ShippingMethods.tsx';
 import { Button } from '~/shared/ui/Button';
 import { PaymentsMethods } from '~/features/cartRegistration/ui/PaymentsMethods/PaymentsMethods.tsx';
 import { PaymentDetails } from '../PaymentDetails/PaymentDetails.tsx';
+import { useTranslation } from 'react-i18next';
 
 interface CartRegistrationModalProps
   extends Omit<ModalProps, 'children'> {
@@ -52,6 +53,8 @@ export const CartRegistrationModal = memo(
       onPayClick,
     } = props;
 
+    const { t } = useTranslation();
+
     const onPayClickHandler = useCallback(() => {
       onPayClick?.({
         data,
@@ -88,7 +91,7 @@ export const CartRegistrationModal = memo(
           }
         />
         <Button className={cls.button} onClick={onPayClickHandler}>
-          Оплатить
+          {t('Оплатить')}
         </Button>
       </Modal>
     );
