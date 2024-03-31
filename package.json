@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/react-input-mask": "^3.0.5",
     "classnames": "^2.5.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-i18next": "^6.0.3",
@@ -31,6 +30,7 @@
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "@types/react-input-mask": "^3.0.5",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "@vitejs/plugin-react": "^4.2.1",

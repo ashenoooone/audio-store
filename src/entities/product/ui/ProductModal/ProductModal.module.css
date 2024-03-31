@@ -1,9 +1,10 @@
 .ProductModal {
     display: flex;
     gap: 15px;
-    max-width: 480px;
+    max-width: 600px;
     width: 100%;
     padding: 40px;
+    height: auto;
 }
 
 .heading {
@@ -36,6 +37,7 @@
 
 .image {
     max-width: 240px;
+    max-height: 240px;
 }
 
 .price_container {
@@ -68,6 +70,22 @@
     padding: 5px 10px;
     border-radius: 10px;
     font: var(--font-sm);
+}
+
+@media screen and (max-width: 768px) {
+    .image {
+        max-width: 180px;
+    }
+
+    .price {
+        font: var(--font-xl);
+    }
+
+    .ProductModal {
+        align-items: center;
+        flex-direction: column;
+        overflow-y: auto;
+    }
 }
 
 @media screen and (max-width: 480px) {

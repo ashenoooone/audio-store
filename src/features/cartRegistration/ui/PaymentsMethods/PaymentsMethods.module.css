@@ -1,4 +1,7 @@
-.PaymentsMethods {}
+.PaymentsMethods h2 {
+    font: var(--font-xxl);
+    font-weight: var(--fw-semi-bold);
+}
 
 .content {
     display: flex;

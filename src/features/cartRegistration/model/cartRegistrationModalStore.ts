@@ -12,11 +12,11 @@ const useCartRegistrationModalStoreBase =
     immer((set) => ({
       changePaymentCardDetails: (d) =>
         set((state) => {
-          state.paymentDetails.card = { ...d };
+          state.paymentDetails.card = d;
         }),
       changePaymentQiwiDetails: (d) =>
         set((state) => {
-          state.paymentDetails.qiwi = { ...d };
+          state.paymentDetails.qiwi = d;
         }),
       paymentDetails: {
         card: {

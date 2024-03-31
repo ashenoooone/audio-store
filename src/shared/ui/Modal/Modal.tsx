@@ -75,21 +75,20 @@ export const Modal = (props: ModalProps) => {
           [cls.closing]: isClosing,
         })}
       >
-        <div className={cls.overlay} onClick={onOverlayClick}>
-          <Card
-            className={classNames(cls.content, className)}
-            onClick={onContentClick}
+        <div className={cls.overlay} onClick={onOverlayClick} />
+        <Card
+          className={classNames(cls.content, className)}
+          onClick={onContentClick}
+        >
+          {children}
+          <Button
+            onClick={onOverlayClick}
+            className={cls.close_btn}
+            buttonTheme={'link'}
           >
-            {children}
-            <Button
-              onClick={onOverlayClick}
-              className={cls.close_btn}
-              buttonTheme={'link'}
-            >
-              <CrossSVG />
-            </Button>
-          </Card>
-        </div>
+            <CrossSVG />
+          </Button>
+        </Card>
       </div>
     </Portal>
   );

@@ -23,3 +23,19 @@
     font-weight: var(--fw-semi-bold);
     margin: 0 0 13px;
 }
+
+
+@media screen and (max-width:480px) {
+    .cart_list {
+        width: 100%;
+        flex-basis: 100%;
+        order: 1;
+    }
+    .cart_total {
+        width: 100%;
+        flex-basis: 100%;
+    }
+    .content {
+        flex-direction: column;
+    }
+}

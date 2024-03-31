@@ -1,6 +1,10 @@
 @import "./fonts/stylesheet.css";
 @import 'vendor/normalize.css';
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
     /* colors */
     --primary-color: #FFA542;
@@ -71,4 +75,10 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+    .content-page {
+        padding: 0 15px;
+    }
 }

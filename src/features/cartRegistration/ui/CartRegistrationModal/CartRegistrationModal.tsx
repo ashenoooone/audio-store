@@ -1,9 +1,10 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import cls from './CartRegistrationModal.module.css';
 import classNames from 'classnames';
 import { Modal, ModalProps } from '~/shared/ui/Modal';
 import {
   CartRegistrationModalStoreDataType,
+  PaymentDetailsType,
   PaymentMethodMapper,
   PaymentType,
   ShippingMethod,
@@ -11,7 +12,8 @@ import {
 } from '../../model/types.ts';
 import { ShippingMethods } from '../ShippingMethods/ShippingMethods.tsx';
 import { PaymentsMethods } from '../PaymentsMethods/PaymentsMethods.tsx';
-import { PaymentDetails } from '~/features/cartRegistration/ui/PaymentDetails/PaymentDetails.tsx';
+import { PaymentDetails } from '../PaymentDetails/PaymentDetails.tsx';
+import { Button } from '~/shared/ui/Button';
 
 interface CartRegistrationModalProps
   extends Omit<ModalProps, 'children'> {
@@ -19,6 +21,18 @@ interface CartRegistrationModalProps
   data?: CartRegistrationModalStoreDataType;
   onChangeShippingMethod?: (m: ShippingMethod) => void;
   onChangePaymentMethod?: (m: PaymentType) => void;
+  onChangeQiwiPhoneNumber?: (number: string) => void;
+  onChangeCardNumber?: (number: string) => void;
+  onChangeCardCVV?: (cvv: string) => void;
+  onChangeCardDate?: (date: string) => void;
+  paymentDetails?: PaymentDetailsType;
+  onPayClick?: ({
+    paymentDetails,
+    data,
+  }: {
+    data?: CartRegistrationModalStoreDataType;
+    paymentDetails?: PaymentDetailsType;
+  }) => void;
 }
 
 export const CartRegistrationModal = memo(
@@ -30,7 +44,21 @@ export const CartRegistrationModal = memo(
       onClose,
       isOpen,
       onChangePaymentMethod,
+      onChangeQiwiPhoneNumber,
+      onChangeCardNumber,
+      onChangeCardDate,
+      onChangeCardCVV,
+      paymentDetails,
+      onPayClick,
     } = props;
+
+    const onPayClickHandler = useCallback(() => {
+      onPayClick?.({
+        data,
+        paymentDetails,
+      });
+    }, [data, onPayClick, paymentDetails]);
+
     return (
       <Modal
         isOpen={isOpen}
@@ -44,7 +72,14 @@ export const CartRegistrationModal = memo(
             Object.keys(PaymentMethodMapper) as PaymentType[]
           }
         />
-        <PaymentDetails selectedPaymentMethod={data?.paymentType} />
+        <PaymentDetails
+          selectedPaymentMethod={data?.paymentType}
+          onChangeQiwiPhoneNumber={onChangeQiwiPhoneNumber}
+          onChangeCardNumber={onChangeCardNumber}
+          onChangeCardDate={onChangeCardDate}
+          onChangeCardCVV={onChangeCardCVV}
+          paymentDetails={paymentDetails}
+        />
         <ShippingMethods
           onChange={onChangeShippingMethod}
           selectedShippingMethod={data?.shippingMethod}
@@ -52,6 +87,9 @@ export const CartRegistrationModal = memo(
             Object.keys(ShippingMethodMapper) as ShippingMethod[]
           }
         />
+        <Button className={cls.button} onClick={onPayClickHandler}>
+          Оплатить
+        </Button>
       </Modal>
     );
   },

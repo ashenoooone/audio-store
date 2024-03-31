@@ -16,9 +16,11 @@ import {
 import { useFavouritesStore } from '~/entities/favourites';
 import {
   CartRegistrationModal,
+  CartRegistrationModalStoreDataType,
   useCartRegistrationModalStore,
 } from '~/features/cartRegistration';
 import {
+  PaymentDetailsType,
   PaymentType,
   ShippingMethod,
 } from '~/features/cartRegistration/model/types.ts';
@@ -54,6 +56,12 @@ export const Cart = () => {
     useCartRegistrationModalStore.use.open?.();
   const cartRegistrationModalData =
     useCartRegistrationModalStore.use.data?.();
+  const cartRegistrationPaymentDetails =
+    useCartRegistrationModalStore.use.paymentDetails();
+  const changePaymentCardDetails =
+    useCartRegistrationModalStore.use?.changePaymentCardDetails();
+  const changePaymentQiwiDetails =
+    useCartRegistrationModalStore.use?.changePaymentQiwiDetails();
 
   const onProductListBuyClick = useCallback(
     (product: ProductType) => {
@@ -123,6 +131,58 @@ export const Cart = () => {
     [changeCartRegistrationPaymentMethod],
   );
 
+  const onCartRegistrationModalChangeCardCVV = useCallback(
+    (cvv: string) => {
+      changePaymentCardDetails({
+        ...cartRegistrationPaymentDetails.card,
+        card_cvv: cvv,
+      });
+    },
+    [cartRegistrationPaymentDetails, changePaymentCardDetails],
+  );
+
+  const onCartRegistrationModalChangeCardDate = useCallback(
+    (date: string) => {
+      changePaymentCardDetails({
+        ...cartRegistrationPaymentDetails.card,
+        card_date: date,
+      });
+    },
+    [cartRegistrationPaymentDetails.card, changePaymentCardDetails],
+  );
+
+  const onCartRegistrationModalChangeCardNumber = useCallback(
+    (number: string) => {
+      changePaymentCardDetails({
+        ...cartRegistrationPaymentDetails.card,
+        card_number: number,
+      });
+    },
+    [cartRegistrationPaymentDetails.card, changePaymentCardDetails],
+  );
+
+  const onCartRegistrationModalChangeQiwiPhoneNumber = useCallback(
+    (number: string) => {
+      changePaymentQiwiDetails({
+        phone_number: number,
+      });
+    },
+    [changePaymentQiwiDetails],
+  );
+
+  const onCartRegistrationModalPayClick = useCallback(
+    ({
+      paymentDetails,
+      data,
+    }: {
+      data?: CartRegistrationModalStoreDataType;
+      paymentDetails?: PaymentDetailsType;
+    }) => {
+      console.log(paymentDetails, data);
+    },
+    [],
+  );
+
   return (
     <div className={cls.Cart}>
       <h1 className={cls.title}>{t('Корзина')}</h1>
@@ -155,6 +215,7 @@ export const Cart = () => {
       <CartRegistrationModal
         isOpen={isCartRegistrationModalOpen}
         onClose={onCartRegistrationModalClose}
+        paymentDetails={cartRegistrationPaymentDetails}
         data={cartRegistrationModalData}
         onChangeShippingMethod={
           onCartRegistrationModalChangeShippingMethod
@@ -162,6 +223,13 @@ export const Cart = () => {
         onChangePaymentMethod={
           onCartRegistrationModalChangePaymentMethod
         }
+        onChangeCardCVV={onCartRegistrationModalChangeCardCVV}
+        onChangeCardDate={onCartRegistrationModalChangeCardDate}
+        onChangeCardNumber={onCartRegistrationModalChangeCardNumber}
+        onChangeQiwiPhoneNumber={
+          onCartRegistrationModalChangeQiwiPhoneNumber
+        }
+        onPayClick={onCartRegistrationModalPayClick}
       />
     </div>
   );

@@ -1,8 +1,8 @@
-import React, { HTMLAttributes, memo } from 'react';
+import React, { InputHTMLAttributes, memo } from 'react';
 import cls from './Input.module.css';
 import classNames from 'classnames';
 
-interface InputProps extends HTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
 }
 

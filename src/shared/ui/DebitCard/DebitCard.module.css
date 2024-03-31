@@ -1,0 +1,44 @@
+.DebitCard {
+    border-radius: 8px;
+    border: 2px solid var(--secondary-color);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Input {
+    border: 0;
+    font: var(--font-xl);
+    padding: 5px 10px;
+    border-bottom: 2px solid var(--black);
+}
+
+.footer {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.number {
+    font: var(--font-xxl);
+    position: relative;
+}
+
+.cvv {
+    width: 50px;
+}
+
+.date {
+    width: 75px;
+}
+
+@media screen and (max-width: 768px) {
+    .number {
+        font: var(--font-xl);
+    }
+
+    .footer {
+        gap: 5px;
+    }
+}
