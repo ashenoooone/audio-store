@@ -13,8 +13,8 @@
 7. [x] Хранение данных о каждом товаре в виде элемента массив
 8. [x] Возможность удалять карточку товара из корзины товаров;
 9. [x] Добавил интернационализацию (смену языков)
-10. [ ] Адаптивность на все устройства
-11. [ ] Реализовать «Переход к оформлению» на отдельную страницу с формой оплаты или
+10. [x] Адаптивность на все устройства
+11. [x] Реализовать «Переход к оформлению» на отдельную страницу с формой оплаты или
    модальное окно с формой оплаты;
 12. [x] Реализовать модальное окно с подробной информацией о товаре, добавить в карточку
     иконку просмотра на свой выбор, которая будет открывать данное модальное окно
@@ -33,12 +33,16 @@ export enum Routes {
   MAIN = 'main',
   CART = 'cart',
   FAVOURITES = 'favourites',
+  TERMS = 'terms',
+  CONTACTS = 'contacts',
   NOT_FOUND = 'not_found',
 }
 // объект для хранения путей для роутов
 export const RoutesPaths: Record<Routes, string> = {
   [Routes.CART]: '/cart',
   [Routes.FAVOURITES]: '/favourites',
+  [Routes.TERMS]: '/terms',
+  [Routes.CONTACTS]: '/contacts',
   [Routes.MAIN]: '/',
   [Routes.NOT_FOUND]: '*',
 };
@@ -47,6 +51,14 @@ export const RoutesConfig: Record<Routes, RouteProps> = {
   [Routes.MAIN]: {
     path: RoutesPaths.main,
     element: <MainPage />,
+  },
+  [Routes.CONTACTS]: {
+    path: RoutesPaths.contacts,
+    element: <ContactsPage />,
+  },
+  [Routes.TERMS]: {
+    path: RoutesPaths.terms,
+    element: <TermsPage />,
   },
   [Routes.CART]: {
     path: RoutesPaths.cart,
@@ -61,6 +73,7 @@ export const RoutesConfig: Record<Routes, RouteProps> = {
     element: <ErrorPage />,
   },
 };
+
 ```
 
 Далее в файле ```src/app/providers/RouterProvider/ui/RouterProvider.tsx``` создаем роуты следующим образом
