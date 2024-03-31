@@ -3,6 +3,7 @@ import { ProductType } from '~/entities/product';
 import cls from './ProductList.module.css';
 import { Product } from '../Product/Product';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 interface ProductListProps {
   className?: string;
@@ -24,22 +25,29 @@ export const ProductList = memo((props: ProductListProps) => {
     favsList,
     onOpenExtendedProductInfo,
   } = props;
+
+  const { t } = useTranslation();
+
   return (
     <div className={classNames(className, cls.ProductList)}>
       {title && <h2 className={cls.title}>{title}</h2>}
       <div className={cls.list}>
-        {products.map((p) => (
-          <Product
-            onOpenExtendedProductInfo={onOpenExtendedProductInfo}
-            inFavs={Boolean(
-              favsList?.find((item) => item.title === p.title),
-            )}
-            onBuyClick={onBuyClick}
-            key={p.title}
-            product={p}
-            onToggleItemInFavs={onToggleItemInFavs}
-          />
-        ))}
+        {products.length > 0 ? (
+          products.map((p) => (
+            <Product
+              onOpenExtendedProductInfo={onOpenExtendedProductInfo}
+              inFavs={Boolean(
+                favsList?.find((item) => item.title === p.title),
+              )}
+              onBuyClick={onBuyClick}
+              key={p.title}
+              product={p}
+              onToggleItemInFavs={onToggleItemInFavs}
+            />
+          ))
+        ) : (
+          <p>{t('Пусто')}</p>
+        )}
       </div>
     </div>
   );
