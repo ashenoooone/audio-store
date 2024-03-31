@@ -11,9 +11,9 @@ import {
   ShippingMethodMapper,
 } from '../../model/types.ts';
 import { ShippingMethods } from '../ShippingMethods/ShippingMethods.tsx';
-import { PaymentsMethods } from '../PaymentsMethods/PaymentsMethods.tsx';
-import { PaymentDetails } from '../PaymentDetails/PaymentDetails.tsx';
 import { Button } from '~/shared/ui/Button';
+import { PaymentsMethods } from '~/features/cartRegistration/ui/PaymentsMethods/PaymentsMethods.tsx';
+import { PaymentDetails } from '../PaymentDetails/PaymentDetails.tsx';
 
 interface CartRegistrationModalProps
   extends Omit<ModalProps, 'children'> {

@@ -1,6 +1,11 @@
 .CartRegistrationModal {
     max-width: 600px;
-    overflow-y: auto;
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    flex-direction: column;
+    padding: 40px;
+    height: auto;
 }
 
 .button {
