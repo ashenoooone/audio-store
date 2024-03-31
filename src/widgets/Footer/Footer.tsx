@@ -46,10 +46,10 @@ export const Footer = memo((props: FooterProps) => {
       <div className={cls.links}>
         <Link to={RoutesPaths.favourites}>{t('Избранное')}</Link>
         <Link to={RoutesPaths.cart}>{t('Корзина')}</Link>
-        <Link to={RoutesPaths.cart}>{t('Контакты')}</Link>
+        <Link to={RoutesPaths.contacts}>{t('Контакты')}</Link>
       </div>
       <div className={cls.languages}>
-        <Link to={RoutesPaths.cart}>{t('Условия сервиса')}</Link>
+        <Link to={RoutesPaths.terms}>{t('Условия сервиса')}</Link>
         <div className={cls.lang_toggler_container}>
           <PlanetSVG />
           <Button
